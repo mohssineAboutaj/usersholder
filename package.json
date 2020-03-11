@@ -29,5 +29,8 @@
 		"sirv-cli": "^0.4.4",
 		"svelte-routing": "^1.4.0",
 		"sveltestrap": "^3.2.10"
-	}
+	},
+	"license": "MIT",
+	"author": "Mohssine Aboutaj",
+	"homepage": "https://usersholder.netlify.com"
 }

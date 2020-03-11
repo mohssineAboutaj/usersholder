@@ -26,7 +26,7 @@
 
 <Router>
 	<Navbar color="primary" dark expand="md">
-		<NavbarBrand href="/">sveltestrap</NavbarBrand>
+		<NavbarBrand href="/">Users holder</NavbarBrand>
 		<NavbarToggler on:click={() => isOpen = !isOpen}>
 			<Icon icon={faBars} />
 		</NavbarToggler>

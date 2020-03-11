@@ -2,6 +2,9 @@
 	import { onMount } from 'svelte'
 	import axios from 'axios'
 	import { api } from '../api.config.js'
+	import { Link } from 'svelte-routing'
+	import Icon from 'fa-svelte'
+	import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 	let users = []
 	let getUsers = async () => {
@@ -26,15 +29,15 @@
 					<img 
 						src="../assets/img/avatar.png"
 						alt="{user.username}"
-						class="img-fluid"
+						class="img-fluid rounded-circle"
 						width="100"
 					/>
 				</div>
 				<div class="mx-2">
 					<h5>
-						<a href="{api.base}/{user.id}" class="btn-link">
+						<Link to="/user/{user.id}">
 							{ user.name }
-						</a>
+						</Link>
 					</h5>
 					<h6>@{ user.username }</h6>
 				</div>
@@ -42,5 +45,8 @@
 		{/each}
 	</ul>
 {:else}
-	<span class="h4">no data</span>
+	<span class="h4">
+		<Icon icon={faSpinner} class="fa-spine mx-2" />
+		 loading...
+	</span>
 {/if}
