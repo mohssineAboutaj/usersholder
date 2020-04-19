@@ -9,7 +9,7 @@
 	let users = []
 	let getUsers = async () => {
 		return await axios.get(api.base).then(res => {
-			users = res.data
+			users = res.data.data
 		}).catch(err => {
 			console.log(err)
 		})
@@ -27,8 +27,8 @@
 			<li class="list-group-item d-flex align-items-center" id="{user.id}">
 				<div class="rounded-circle">
 					<img 
-						src="../assets/img/avatar.png"
-						alt="{user.username}"
+						src="{ user.avatar }"
+						alt="{ user.first_name }"
 						class="img-fluid rounded-circle"
 						width="100"
 					/>
@@ -36,10 +36,10 @@
 				<div class="mx-2">
 					<h5>
 						<Link to="/user/{user.id}">
-							{ user.name }
+							{ `${user.first_name} ${user.last_name} ` }
 						</Link>
 					</h5>
-					<h6>@{ user.username }</h6>
+					<h6>@{ user.first_name }</h6>
 				</div>
 			</li>
 		{/each}

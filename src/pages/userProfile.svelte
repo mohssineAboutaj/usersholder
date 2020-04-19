@@ -19,13 +19,13 @@
 		faBriefcase, 
 	} from '@fortawesome/free-solid-svg-icons'
 
-	let user = {}
+	export let user = {}
 
 	export let id;
 
 	onMount(() => {
 		axios.get(api.base + '/' + id).then(res => {
-			user = res.data
+			user = {...res.data.data, ...res.data.ad }
 		}).catch(err => {
 			console.log(err)
 		})
@@ -36,18 +36,18 @@
 <h3 class="text-center text-capitalize mt-2 mb-4">profile</h3>
 
 {#if user}
-	<div class="card">
+	<div class="card mx-auto" style="max-width: 500px">
 		<div class="text-center">
 			<img 
-				src="../assets/img/avatar.png"
-				alt=""
+				src="{ user.avatar }"
+				alt="{ user.first_name }"
 				class="img-fluid rounded-circle"
 				width="100"
 			/>
 		</div>
 		<div class="card-body">
 			<h1 class="card-title h3 text-capitalize text-center">
-				{ user.name }
+				{ `${user.first_name} ${user.last_name} ` }
 			</h1>
 		</div>
 		<div>
@@ -56,7 +56,7 @@
 					<span class="badge badge-pill">
 						<Icon icon={faUserCircle} />
 					</span>
-					{ user.username }
+					{ user.first_name }
 				</li>
 				<li class="list-group-item d-flex align-items-center">
 					<span class="badge badge-pill">
@@ -64,33 +64,23 @@
 					</span>
 					{ user.email }
 				</li>
-				{#if user.company}
-					<li class="list-group-item d-flex align-items-center">
-						<span class="badge badge-pill">
-							<Icon icon={faMapMarkerAlt} />
-						</span>
-						{ `${user.address.street}, ${user.address.suite}, ${user.address.city}` }
-					</li>
-				{/if}
-				{#if user.company}
-					<li class="list-group-item d-flex align-items-center">
-						<span class="badge badge-pill">
-							<Icon icon={faBriefcase} />
-						</span>
-						{ user.company.name }
-					</li>
-				{/if}
+				<li class="list-group-item d-flex align-items-center">
+					<span class="badge badge-pill">
+						<Icon icon={faBriefcase} />
+					</span>
+					{ user.company }
+				</li>
 				<li class="list-group-item d-flex align-items-center">
 					<span class="badge badge-pill">
 						<Icon icon={faPhone} />
 					</span>
-					{ user.phone }
+					+123456789
 				</li>
 				<li class="list-group-item d-flex align-items-center">
 					<span class="badge badge-pill">
 						<Icon icon={faGlobe} />
 					</span>
-					{ user.website }
+					{ user.url }
 				</li>
 			</ul>
 		</div>

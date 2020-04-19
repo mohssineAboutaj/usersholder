@@ -1,5 +1,6 @@
 <script>
 	import Users from '../components/users.svelte'
+	import { api } from '../api.config.js'
 </script>
 
 <div class="home">
@@ -9,7 +10,7 @@
 				UsersHolder App
 			</h1>
 			<h4 class="mb-2">
-				a simple app to fetch & print users in cards fetched from <a href="https://jsonplaceholder.typicode.com" class="btn btn-link text-uppercase">jsonplaceholder api</a>
+				a simple app to fetch & print users in cards fetched from <a href="{ api.base }" class="btn btn-link text-uppercase">ReqRes.in</a>
 			</h4>
 		</div>
 	</header>

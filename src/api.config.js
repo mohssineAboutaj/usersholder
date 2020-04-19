@@ -1,3 +1,3 @@
 export const api = {
-	base: "https://jsonplaceholder.typicode.com/users",
+	base: "https://reqres.in/api/users",
 }
